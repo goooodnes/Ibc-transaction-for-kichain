@@ -44,7 +44,7 @@ create a folder with network configuration and go to it:
 
 ##                               create a settings file for both networks:
 
-> nano kichain-t-3.json
+> nano kichain-t-4.json
 
 #### copy the content and place it in a file
 #we use the global rpc as we put it on vps where the node is not installed locally kichain.
@@ -80,7 +80,7 @@ create a folder with network configuration and go to it:
 
 > rly chains add -f groot-011.json
 > 
-> rly chains add -f kichain-t-3.json
+> rly chains add -f kichain-t-4.json
 > 
 > cd
 
@@ -177,6 +177,8 @@ client-id: 07-tendermint-16
 > I[2021–09–06|09:35:00.471] ✔ [groot-011]@{412926} - msg(0:transfer) hash(D4E8A8C5CA7E6ED0B3FD247C456938E1A160B3E850FB10E27440D25A08C69DAE)
 
 > https://testnet.mintscan.io/rizon/txs/D4E8A8C5CA7E6ED0B3FD247C456938E1A160B3E850FB10E27440D25A08C69DAE
+
+>https://testnet.mintscan.io/rizon/txs/D23F51989A2E65749318A2B13DC6DEA9FA0F267E43529081C16E341CF80A1015
 
 #### now we will translate in the other direction, the command looks similar
 
