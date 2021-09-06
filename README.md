@@ -196,7 +196,7 @@ first we need to start Relayer permanent we can use tmux or screen but more sens
 > sudo tee /etc/systemd/system/rlyd.service > /dev/null <<EOF
 [Unit]
 Description=relayer client
-After=network-online.target, starsd.service
+After=network-online.target, rizond.service
 [Service]
 User=$USER
 ExecStart=$(which rly) start transfer
