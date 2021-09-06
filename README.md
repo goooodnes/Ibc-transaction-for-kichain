@@ -50,7 +50,7 @@ create a folder with network configuration and go to it:
 #we use the global rpc as we put it on vps where the node is not installed locally kichain.
 
 {
- "chain-id": "kichain-t-3",
+ "chain-id": "kichain-t-4",
  
  "rpc-addr": "https://rpc-challenge.blockchain.ki:443", 
  
@@ -87,13 +87,13 @@ create a folder with network configuration and go to it:
 #### we create new wallets or restore the ones you already have:
 > rly keys add groot-011 name of your wallet 
 >
->rly keys add kichain-t-3 name of your wallet
+>rly keys add kichain-t-4 name of your wallet
  
 #### or we restore it with the command:
 
 > rly keys restore groot-011 name of your wallet "mnemonic farce from wallet"
 >
-> rly keys restore kichain-t-3 name of your wallet "mnemonic farce from wallet"
+> rly keys restore kichain-t-4 name of your wallet "mnemonic farce from wallet"
 
  #You can use the same mnemonic for both wallets, which is very convenient for me :-) the relay will create different wallets
 based on network settings with different rizon and tki prefixes:
@@ -101,7 +101,7 @@ based on network settings with different rizon and tki prefixes:
 #### Add the newly created keys to the config of the relay:
 > rly chains edit groot-011 key name of your wallet
 >
-> rly chains edit kichain-t-3 key name of your wallet
+> rly chains edit kichain-t-4 key name of your wallet
 
 #### Let's change the timeout of waiting for confirmation to 30s by changing the standard 10s:
 > nano ~/.relayer/config/config.yaml
@@ -111,17 +111,17 @@ based on network settings with different rizon and tki prefixes:
 #### Wallets must be funded on both networks. check the availability of coins with the command:
 > rly q balance groot-011
 >
-> rly q balance kichain-t-3
+> rly q balance kichain-t-4
 
 #### If there are coins on the balance and the relay shows them, then we continue, We initialize the light client in both networks with the command:
 
 > rly light init groot-011 -f
 >
-> rly light init kichain-t-3 -f
+> rly light init kichain-t-4 -f
 
 #### We try to generate a channel between the networks with the command:
 
-> rly paths generate groot-011 kichain-t-3 transfer  -- port=transfer
+> rly paths generate groot-011 kichain-t-4 transfer  -- port=transfer
 
 #If the command does not work, try several times or add the - debug parameter to see the step-by-step actions of the system
 the output should be as follows:
@@ -147,14 +147,14 @@ client-id: 07-tendermint-16
 
 > rly light init groot-011 -f
 >
-> rly light init kichain-t-3 -f
+> rly light init kichain-t-4 -f
 
 #### run the command to open the channel again
  
 > rly tx link transfer  -- debug
 
 #### and so on until you see the output of the command:
-> I[2021–09–06|09:22:54.913] ★ Channel created: [groot-011]chan{channel-11}port{transfer} -> [kichain-t-3]chan{channel-41}port{transfer}
+> I[2021–09–06|09:22:54.913] ★ Channel created: [groot-011]chan{channel-11}port{transfer} -> [kichain-t-4]chan{channel-41}port{transfer}
 
 #### now when calling the command
 
@@ -170,7 +170,7 @@ client-id: 07-tendermint-16
 
 # command template but not as devilish as it is drawn .. in our case the command will look like this:
 
-> rly tx transfer groot-011 kichain-t-3 1000000uatolo tki1eakzw0qhxcclerm0uwxae88ugcmet2radufqqf  -- path transfer
+> rly tx transfer groot-011 kichain-t-4 1000000uatolo tki1eakzw0qhxcclerm0uwxae88ugcmet2radufqqf  -- path transfer
 
 # and the answer will be a conclusion about a successful hash transaction, which can be checked in both rizon and kichain networks in explorer
   
@@ -180,13 +180,13 @@ client-id: 07-tendermint-16
 
 #### now we will translate in the other direction, the command looks similar
 
-> rly tx transfer kichain-t-3 groot-011 1000000utki rizon1eakzw0qhxcclerm0uwxae88ugcmet2raquwh9n  -- path transfer
+> rly tx transfer kichain-t-4 groot-011 1000000utki rizon1eakzw0qhxcclerm0uwxae88ugcmet2raquwh9n  -- path transfer
 
 #### if you have forgotten wallet addresses. this happens sometimes :-) then you can see the command
 
 > rly keys list groot-011
 >
-> rly keys list kichaint-t-3
+> rly keys list kichaint-t-4
 
 # Unather way to use Realayer by REMOTE from any kichain node to any wallet in second chain.
 first we need to start Relayer permanent we can use tmux or screen but more sensce use service file. let make one
