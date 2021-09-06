@@ -180,6 +180,10 @@ client-id: 07-tendermint-16
 
 >https://testnet.mintscan.io/rizon/txs/D23F51989A2E65749318A2B13DC6DEA9FA0F267E43529081C16E341CF80A1015
 
+>https://ki.thecodes.dev/tx/92E0FBD56828840DFC638650910A7A41684CDEA678BC5FA43A6C0C063DF4F443
+
+>https://ki.thecodes.dev/tx/02D5881818D5A27CE0120ECC63B8FD23091391AE0037B0E2D8BAE3146E9E5990
+
 #### now we will translate in the other direction, the command looks similar
 
 > rly tx transfer kichain-t-4 groot-011 1000000utki rizon1eakzw0qhxcclerm0uwxae88ugcmet2raquwh9n  -- path transfer
