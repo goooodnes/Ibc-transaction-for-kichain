@@ -188,4 +188,38 @@ client-id: 07-tendermint-16
 >
 > rly keys list kichaint-t-3
 
+# Unather way to use Realayer by REMOTE from any kichain node to any wallet in second chain.
+first we need to start Relayer permanent we can use tmux or screen but more sensce use service file. let make one
+
+> sudo tee /etc/systemd/system/rlyd.service > /dev/null <<EOF
+[Unit]
+Description=relayer client
+After=network-online.target, starsd.service
+[Service]
+User=$USER
+ExecStart=$(which rly) start transfer
+Restart=always
+RestartSec=3
+LimitNOFILE=65535
+[Install]
+WantedBy=multi-user.target
+EOF
+
+now make start our service and lets use Relayer remote
+> sudo systemctl daemon-reload
+
+> sudo systemctl enable rlyd
+
+> sudo systemctl start rlyd                                                             
+# Use thise comand to transfer 
+> kid tx ibc-transfer transfer transfer channel-N rizon_WALLET_address 1000utki --from name_OF_wallet --fees=5000utki --gas=auto --chain-id kichain-t-4 --home $HOME/kichain/kid
+
+#number of chanel you can see in config.yaml on relayer or use command 
+   
+   > rly paths show transfer  -- yaml
+   
+Send back to kichain from rizon same comand
+   
+> rizond tx ibc-transfer transfer transfer channel-N tki_wallet_adress 1000uatolo --from your_wallet_name --fees=5000uatolo --gas=auto --chain-id groot-011
+    
 # that's probably all.
